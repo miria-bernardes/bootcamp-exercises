@@ -1,4 +1,4 @@
-package src.main.java.exercises;
+package src.main.java.exercises.classone;
 
 import java.util.Scanner;
 
