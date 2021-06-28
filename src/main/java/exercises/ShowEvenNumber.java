@@ -1,8 +1,8 @@
-package main.java.exercises;
+package src.main.java.exercises;
 
 import java.util.Scanner;
 
-public class ShowEvenNumbers {
+public class ShowEvenNumber {
     public static void main(String[] args) {
 
         System.out.println("Digite um número qualquer: ");
