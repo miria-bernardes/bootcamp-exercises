@@ -10,14 +10,24 @@ public class PrimeNumber {
         int num = input.nextInt();
 
 
+
+        if (isPrimeNumber(num)) {
+            System.out.println("Nao eh primo");
+        } else {
+            System.out.println("eh primo");
+        }
+
+    }
+
+    public static boolean isPrimeNumber(int num) {
+
+        if (num <= 1) return false;
+
         for (int i = 2; i < num; i++) {
             if (num % i == 0) {
-                System.out.println("Nao eh primo");
-                break;
-            } else {
-                System.out.println("eh primo");
-                break;
+                return false;
             }
         }
+        return true;
     }
 }
