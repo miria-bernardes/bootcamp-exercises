@@ -1,9 +1,6 @@
-package src.main.java.exercises.classone;
+package com.bootcamp.exercises.classone;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class DataStructureOrdering {
     public static void main(String[] args) {
