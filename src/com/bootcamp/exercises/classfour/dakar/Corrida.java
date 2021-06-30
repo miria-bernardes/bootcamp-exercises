@@ -1,7 +1,10 @@
 package com.bootcamp.exercises.classfour.dakar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collector;
 
 public class Corrida {
     private int distancia;
@@ -9,6 +12,7 @@ public class Corrida {
     private String nome;
     private int quantidadeVeiculosPermitidos = 4;
     private List<Veiculo> listaVeiculos;
+    private Veiculo vencedor;
     private SocorristaCarro socorristaCarro;
     private SocorristaMoto socorristaMoto;
 
@@ -22,6 +26,22 @@ public class Corrida {
         this.socorristaMoto = new SocorristaMoto("1223");
         this.socorristaCarro = new SocorristaCarro("1222");
 
+    }
+
+    public SocorristaCarro getSocorristaCarro() {
+        return socorristaCarro;
+    }
+
+    public void setSocorristaCarro(SocorristaCarro socorristaCarro) {
+        this.socorristaCarro = socorristaCarro;
+    }
+
+    public SocorristaMoto getSocorristaMoto() {
+        return socorristaMoto;
+    }
+
+    public void setSocorristaMoto(SocorristaMoto socorristaMoto) {
+        this.socorristaMoto = socorristaMoto;
     }
 
     public void registrarCarro(int velocidade, int aceleracao, int anguloDeGiro, String patente) {
@@ -41,11 +61,7 @@ public class Corrida {
     };
 
     public void removerVeiculoPorPlaca(String placa) {
-        for (int i = 0; i < listaVeiculos.size(); i++) {
-            if(listaVeiculos.get(i).getPlaca().equals(placa)) {
-                listaVeiculos.remove(i);
-            }
-        }
+        listaVeiculos.removeIf(e -> e.getPlaca().equals(placa));
     };
 
     public boolean verificarDisponibilidade(String placa) throws Exception {
@@ -62,11 +78,11 @@ public class Corrida {
     }
 
     public boolean jaEstaNaCorrida(String placa) {
-        return listaVeiculos.stream().allMatch(e -> e.getPlaca().equals(placa));
+        return listaVeiculos.stream().anyMatch(e -> e.getPlaca().equals(placa));
     }
 
     public Veiculo determinarVencedor() {
-
+       return listaVeiculos.stream().max(Comparator.comparingDouble(Veiculo::getDesempenho)).get();
     }
 
     public void socorrerCarro(String documento) {
@@ -78,4 +94,7 @@ public class Corrida {
     }
 
 
+    public Veiculo buscarVeiculoPorPlaca(String s) {
+        return listaVeiculos.stream().filter(e -> e.getPlaca().equals(s)).findFirst().get();
+    }
 }

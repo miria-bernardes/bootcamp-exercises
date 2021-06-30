@@ -1,14 +1,16 @@
 package com.bootcamp.exercises.classfour.dakar;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Veiculo {
+public class Veiculo  {
     private int velocidade;
     private int aceleracao;
     private int anguloDeGiro;
     private String placa;
     private double peso;
     private int rodas;
+    private double desempenho;
 
     public Veiculo(int velocidade, int aceleracao, int anguloDeGiro, String placa, double peso, int rodas) {
         this.velocidade = velocidade;
@@ -17,6 +19,8 @@ public class Veiculo {
         this.placa = placa;
         this.peso = peso;
         this.rodas = rodas;
+
+        definirDesempenho();
     }
 
     public Veiculo(String placa) {
@@ -71,9 +75,29 @@ public class Veiculo {
         this.rodas = rodas;
     }
 
+    public double getDesempenho() {
+        return desempenho;
+    }
 
-    public double definirDesempenho() {
-        return  velocidade *  aceleracao / ( anguloDeGiro * (peso - rodas * 100));
+    public void setDesempenho(double desempenho) {
+        this.desempenho = desempenho;
+    }
+
+    public void definirDesempenho() {
+        desempenho =  velocidade *  aceleracao / ( anguloDeGiro * (peso - rodas * 100));
+    }
+
+    @Override
+    public String toString() {
+        return "Veiculo{" +
+                "velocidade=" + velocidade +
+                ", aceleracao=" + aceleracao +
+                ", anguloDeGiro=" + anguloDeGiro +
+                ", placa='" + placa + '\'' +
+                ", peso=" + peso +
+                ", rodas=" + rodas +
+                ", desempenho=" + desempenho +
+                '}';
     }
 
     @Override

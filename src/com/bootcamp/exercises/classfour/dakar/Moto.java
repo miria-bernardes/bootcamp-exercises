@@ -10,4 +10,8 @@ public class Moto extends Veiculo{
     }
 
 
+    @Override
+    public String toString() {
+        return "Moto{} " + super.toString();
+    }
 }
